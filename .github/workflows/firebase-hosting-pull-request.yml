@@ -21,10 +21,10 @@ jobs:
         uses:
           w9jds/firebase-action@v2
         with:
-          args: deploy --only hosting:preview
+          args: deploy --dir=dist --only hosting:appli-meteo-213e1 --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT_APPLI_METEO_213E1 }} --project appli-meteo-213e1
         env: 
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          FIREBASE_PROJECT: ${{ secrets.FIREBASE_PROJECT }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_APPLI_METEO_213E1 }}
+          FIREBASE_PROJECT: appli-meteo-213e1
           FIREBASE_MESSAGE: "Preview deploy from ${{ github.head_ref }}"
           FIREBASE_HOSTING_CHANNEL: "preview"
-          FIREBASE_HOSTING_URL: "https://preview--${{ secrets.FIREBASE_PROJECT }}.web.app"
+          FIREBASE_HOSTING_URL: "https://appli-meteo-213e1.web.app"
