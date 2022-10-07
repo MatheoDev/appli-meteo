@@ -1,30 +1,31 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+  // import le store meteo
+  import { meteo, getMeteo } from './stores/meteo.js';
+  import { search } from './stores/search.js';
+  import { onMount } from 'svelte';
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+  <h1>Appli Météo</h1>
+
+  <div class="main">
+    <div class="meteo">
+      <!-- Champs de recherche -->
+      <input type="text" bind:value={$search} placeholder="Ville" />
+      <button on:click={getMeteo}>Rechercher</button>
+
+      <div class="container">
+        <!-- Affichage de la météo -->
+        <div class="meteo">
+          {#if $meteo}
+            <h2>{$meteo.name}</h2>
+            <p>{$meteo.weather[0].description}</p>
+            <p>{$meteo.main.temp}°C</p>
+          {/if}
+        </div>
+      </div>
+    </div>
   </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
 </main>
 
 <style>
