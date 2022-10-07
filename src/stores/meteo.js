@@ -9,7 +9,7 @@ export const getMeteo = async () => {
   // use city in search store
   const city = get(search);
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cbede3d17e4e69d258d7071e2f53732b`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f57d30b6bf7574fc3419c4d551175e3f&units=metric&lang=fr`
   );
   const data = await response.json();
   // set dans le store 
