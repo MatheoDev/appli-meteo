@@ -14,4 +14,10 @@ export const getMeteo = async () => {
   const data = await response.json();
   // set dans le store 
   meteo.set(data);
+  console.log(data.name);
+  console.log(data.main.temp);
+  var map = L.map('map', {
+    center: [data.coord.lat, data.coord.lon],
+    zoom: 13
+  });
 }
